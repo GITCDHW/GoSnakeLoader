@@ -8,23 +8,23 @@ body {
   background-color: transparent; /* Changed to transparent to fit your main page */
 }
 
-/* New wrapper to scale all content at once */
+/* This is the new wrapper for all content. It will use Flexbox. */
 #game-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* This is the key part that makes everything fit */
-  transform: scale(0.8); /* Adjust this value as needed to fit the portrait frame */
-  transform-origin: center center;
+  width: 100%;
+  padding: 10px; /* Add some padding to prevent it from touching the iframe edges */
+  box-sizing: border-box;
 }
 
 #loader-text-container {
     text-align: center;
-    color: #ffffff;
+    color: #00BFFF;
     font-family: 'Poppins', sans-serif;
-    padding: 10px;
     margin-bottom: 3px;
+    width: 100%; /* Ensures the text container is responsive */
 }
 
 #loader-text-container h2 {
@@ -40,15 +40,17 @@ body {
 #game-container {
   display: flex;
   flex-direction: column;
-  background-color: rgba(220, 220, 220, 0.6);
+  background-color: #1a2034;
   padding: 10px;
   border-radius: 10px;
+  max-width: 100%; /* Ensures the game container fits its parent */
 }
 
 .game-canvas {
-  /* No need for max-width/height here as the parent will scale */
-  width: 400px;
-  height: 400px;
+  /* No more fixed size. This will scale to its container. */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Keeps the canvas a perfect square */
 }
 
 .keys {
@@ -62,7 +64,7 @@ body {
 
 .up {
   position: relative;
-  top: 30px;
+  top: 0px;
 }
 
 .chevron::before {
@@ -72,47 +74,55 @@ body {
   display: inline-block;
   height: 20px;
   width: 20px;
-  top: -10px;
+  top: 15px;
   position: relative;
   transform: rotate(-45deg);
+  border-color: #00BFFF;
 }
 
 .chevron.down::before {
   transform: rotate(135deg);
   top: 15px;
+  border-color: #00BFFF;
 }
 
 .chevron.right::before {
   transform: rotate(45deg);
   top: 15px;
   left: -5px;
+  border-color: #00BFFF;
 }
 
 .chevron.left::before {
   transform: rotate(225deg);
   top: 15px;
   left: 5px;
+  border-color: #00BFFF;
 }
 
 .arr {
   cursor: pointer;
-  width: 70px;
-  height: 70px;
+  width: 20vw; /* Using viewport units for responsive button size */
+  max-width: 70px;
+  height: 20vw;
+  max-height: 70px;
   text-align: center;
-  line-height: 100px;
-  background: gray;
+  line-height: 20vw;
+  max-line-height: 70px;
+  background: #3d4661;
   color: white;
-  font-size: 50px;
-  border-right: 10px solid #ccc;
-  border-bottom: 10px solid #ccc;
-  border-left: 10px solid #ddd;
-  border-top: 10px solid #eee;
+  font-size: 10vw; /* Responsive font size for the arrows */
+  border-right: 10px solid #242424;
+  border-bottom: 10px solid #242424;
+  border-left: 10px solid #5a6485;
+  border-top: 10px solid #6c7694;
   display: inline-block;
   margin: 5px;
   transition: all .05s linear;
   user-select: none;
+  position: relative;
 }
 
 .arr:active {
-  background: #555;
+  background: #1a2034;
 }
