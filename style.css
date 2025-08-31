@@ -1,14 +1,54 @@
 body {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent; /* Changed to transparent to fit your main page */
+}
+
+/* New wrapper to scale all content at once */
+#game-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* This is the key part that makes everything fit */
+  transform: scale(0.8); /* Adjust this value as needed to fit the portrait frame */
+  transform-origin: center center;
+}
+
+#loader-text-container {
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+    margin-bottom: 3px;
+}
+
+#loader-text-container h2 {
+    font-size: 5vw;
+    margin: 0;
+}
+
+#loader-text-container h3 {
+    font-size: 3vw;
+    margin: 0;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(220, 220, 220, 0.6);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .game-canvas {
-  width: 100%;
-  height: 100vw;
-  max-width: 500px;
-  max-height:500px;
-  margin-left: auto;
-  margin-right: auto;
+  /* No need for max-width/height here as the parent will scale */
+  width: 400px;
+  height: 400px;
 }
 
 .keys {
@@ -17,13 +57,12 @@ body {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  height: 200px;
   margin: auto;
 }
 
 .up {
   position: relative;
-  top: -4px;
+  top: 30px;
 }
 
 .chevron::before {
@@ -40,18 +79,18 @@ body {
 
 .chevron.down::before {
   transform: rotate(135deg);
-  top: -22px;
+  top: 15px;
 }
 
 .chevron.right::before {
   transform: rotate(45deg);
-  top: -18px;
+  top: 15px;
   left: -5px;
 }
 
 .chevron.left::before {
   transform: rotate(225deg);
-  top: -18px;
+  top: 15px;
   left: 5px;
 }
 
@@ -76,10 +115,4 @@ body {
 
 .arr:active {
   background: #555;
-}
-
-#game-container {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(220, 220, 220, 0.6);
 }
